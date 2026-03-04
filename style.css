@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Handmade Alphabet';
+  src: url('HandmadeAlphabet.ttf'); 
+  font-weight: bold;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Handmade Alphabet", "Segoe UI", sans-serif;
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  background: #fff1f5;
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden { display: none !important; }
+.center-page { justify-content: center; align-items: center; }
+.lock-scroll { overflow: hidden; }
+.scroll-page { overflow-y: auto; padding-bottom: 140px; }
+
+#page-1 h1, .big-msg { 
+  font-size: 3.5rem; 
+  color: #ff3366; 
+  margin-bottom: 30px;
+  line-height: 1.1;
+}
+
+#page-1 p { font-size: 1.6rem; color: #ff5c8a; }
+
+#yes-btn, #no-btn, #next-btn, .next-page-btn {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  margin: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.small-btn {
+  padding: 10px 20px !important;
+  font-size: 0.9rem !important;
+  width: fit-content;
+  align-self: center;
+}
+
+#yes-btn, #next-btn, .next-page-btn { background: #ff3366; color: white; }
+#no-btn { background: #ddd; }
+#next-btn { animation: pulse 1.5s infinite; }
+
+/* Image Styling for Page 2 */
+#pookie-img {
+  width: 320px;
+  height: auto;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: block;
+}
+
+#pookie-image-container { text-align: center; }
+
+/* Envelope & Letter Logic */
+#envelope-container { margin: 80px auto 60px; }
+#envelope { width: 260px; height: 170px; position: relative; margin: auto; cursor: pointer; }
+.envelope-back { background: #ffb6c1; width: 100%; height: 100%; border-radius: 14px; position: absolute; }
+.envelope-front { background: #ff9eb5; width: 100%; height: 100%; clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%); position: absolute; z-index: 2; }
+.envelope-flap { background: #ff7fa2; width: 100%; height: 100%; clip-path: polygon(0 0, 50% 55%, 100% 0); position: absolute; transform-origin: top; transition: transform 0.6s ease; z-index: 3; }
+
+#letter { 
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%) translateY(0); 
+  width: 90%; max-height: 250px; padding: 18px; font-family: "Pacifico", cursive; 
+  font-size: 0.85rem; line-height: 1.5; color: #ff3366; background: #ffffff; 
+  border-radius: 12px; overflow-y: auto; box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
+  transition: 0.8s ease; z-index: 1; opacity: 0; visibility: hidden;
+}
+
+#envelope.open .envelope-flap { transform: rotateX(180deg); }
+#envelope.open #letter { 
+  transform: translateX(-50%) translateY(-130px); 
+  opacity: 1; visibility: visible; z-index: 5; 
+}
+
+.days { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; }
+.day-card { background: white; padding: 20px; border-radius: 16px; }
+.day-card .date { font-size: 0.8rem; color: #ff7fa2; }
+.day-card h3 { color: #ff3366; }
+.day-card.highlight { border: 2px solid #ff3366; box-shadow: 0 0 15px rgba(255,51,102,0.3); }
+
+#page-4 { cursor: pointer; }
+.photo-stack { position: relative; width: 300px; height: 400px; margin: 20px auto; z-index: 10; }
+.stack-img { 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+  object-fit: cover; border: 8px solid white; border-bottom: 40px solid white; 
+  border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; 
+}
+
+.floating-text-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.floating-word { position: fixed; color: #ff3366; font-weight: bold; z-index: 5; animation: floatUp linear forwards; white-space: nowrap; }
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+.final-credits { 
+  margin-top: auto; padding: 40px; font-size: 1.5rem; color: #ff3366; z-index: 10;
+  font-family: "Handmade Alphabet", sans-serif !important; 
+}
